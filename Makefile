@@ -52,7 +52,7 @@ vim:
 	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
 	ansible-playbook -i inventory.yml --tags "vim" common.yml
 
-vim:
+cron:
 	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
 	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
 	ansible-playbook -i inventory.yml --tags "cron" common.yml
