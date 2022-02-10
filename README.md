@@ -59,7 +59,7 @@ Once the play is complete, your plausible instance should be accessible at *your
 
 ### Things to note
 
-- Passwords must be hashed using `mkpasswd -m sha-512`
+- Passwords for Linux users must be hashed using `mkpasswd -m sha-512`
 
 ## Installing on an existing server
 
