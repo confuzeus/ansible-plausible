@@ -58,6 +58,14 @@ Once the play is complete, your plausible instance should be accessible at *your
 
 - Passwords must be hashed using `mkpasswd -m sha-512`
 
+## Installing on an existing server
+
+If you already have a server that you use to host other stuff, you should avoid running the
+*common* role because it will destroy your Nginx configs and possibly lock you out from SSH.
+
+Instead, run `make plausible` to only install Plausible. You will need to have *docker* and
+*docker-compose* installed.
+
 ## Support and feature requests
 
 Feel free to request support and features on the Github issue tracker.
@@ -66,4 +74,4 @@ Feel free to request support and features on the Github issue tracker.
 
 License is MIT.
 
-Copyright 2022 Josh Michael karamuth
+Copyright 2022 Josh Michael karamuth <michael@confuzeus.com>
