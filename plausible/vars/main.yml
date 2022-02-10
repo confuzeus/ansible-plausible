@@ -9,6 +9,7 @@ plausible_admin_user_password: "changeme"
 
 plausible_base_url: "https://plausible.swift.com"
 
+# Generate with openssl rand -base64 64 | tr -d '\n' ; echo
 plausible_secret_key: "changeme"
 
 # Email notification settings
