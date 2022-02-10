@@ -25,6 +25,7 @@
       - "ufw"
       - "gpg"
       - "git"
+      - "anacron"
 
 - name: Import and execute Docker tasks
   import_tasks: "_docker.yml"
