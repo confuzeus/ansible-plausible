@@ -11,8 +11,6 @@ timezone_name: "Indian/Mauritius"
 # Generate with mkpasswd -m sha-512
 root_passwd_hash: "$6$JlvOeLe8Y4.cpHan$7Qv4IAEgkAW0/E5BvK93LJ824Ox4M9vrGrnyw6Ub7xEJTE4zu5ZrTcby.tf4YpsTt5NucakNq.B3Vn/80e6F2/"
 
-admin_username: baws
-
 # Generate with mkpasswd -m sha-512
 admin_passwd_hash: "$6$Nem4A8XXwYN9P3KB$zgK6E7I4zsdpuvlmANZCa2WoDZ/nA2icLdcAdcwcU1983NqNVtrM5xWVCT1jBGIddBvBtN/NTsg56aWPRhVPb."
 
