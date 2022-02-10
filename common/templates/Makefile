@@ -8,7 +8,7 @@ certbot-plausible:
 		--email {{ certbot_email }} \
 		--dns-cloudflare \
 		--dns-cloudflare-credentials /root/cloudflare.ini \
-		{% if with_www == "false" -%}
+		{% if with_www == true -%}
 		-d www.{{ domain_name }} \
-		{%- endif }
+		{%- endif %}
 		-d {{ domain_name }}
