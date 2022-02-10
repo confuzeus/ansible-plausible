@@ -14,7 +14,7 @@ playbook makes it easier for DIYers to self host an instance.
 
 ## Quick start
 
-Setup your ssh connection first. Edit your `~/.ssh/config` like so:
+Setup your ssh connection first. Edit your `~/.ssh/config` on your local machine like so:
 
 
 ```shell
@@ -28,8 +28,10 @@ Now you can edit `inventory.yml` to look like this:
 
 ```yaml
 all:
-  hosts:
-    myhostname:
+  hosts: myserver
+  vars:
+    admin_username: "myusername"
+    plausible_port: "10000"
 ```
 
 Make sure to copy your SSH public key to your server and enable passwordless login.
@@ -37,6 +39,7 @@ Make sure to copy your SSH public key to your server and enable passwordless log
 Now, edit the file at `common/vars/main.yml`. Change the values are you see fit.
 
 Rename the file at `common/templates/example.com.conf` and set it to `yourdomain.com.conf`.
+Or keep the example template and make a copy of it instead.
 
 Now edit the file at `plausible/vars/main.yml` and set the values as you like.
 
@@ -47,8 +50,8 @@ ansible-vault encrypt common/vars/main.yml
 ansible-vault encrypt plausible/vars/main.yml
 ```
 
-If you encrypt your variables, edit `Makefile` and set `COMMON_DEFAULT_ASK_VAULT_PASS` and
-`PLAUSIBLE_DEFAULT_ASK_VAULT_PASS` to True.
+If you encrypt your variables, edit `Makefile` and set `COMMON_ASK_VAULT_PASS` and
+`PLAUSIBLE_ASK_VAULT_PASS` to True.
 
 Run `make` and the play should start.
 
