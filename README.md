@@ -21,8 +21,10 @@ Setup your ssh connection first. Edit your `~/.ssh/config` on your local machine
 Host myhostname
     HostName 192.168.1.1
     User root
-    IdentitiesOnly
+    IdentitiesOnly yes
 ```
+
+*HostName* will equal to your server's IP address.
 
 Now you can edit `inventory.yml` to look like this:
 
