@@ -22,3 +22,5 @@ plausible_smtp_password: "changeme"
 plausible_postgres_password: "changeme"
 
 plausible_install_dir: "/home/{{ admin_username }}/plausible"
+
+clickhouse_version: "21.3"
