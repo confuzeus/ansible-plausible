@@ -1,0 +1,6 @@
+---
+- name: Copy certbot cron
+  copy:
+    src: "certbot-cron"
+    dest: "/etc/cron.monthly/certbot"
+    mode: "u+x"

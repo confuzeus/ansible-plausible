@@ -39,3 +39,8 @@
   import_tasks: "8-vim.yml"
   tags:
   - vim
+
+- name: Import and execute cron tasks
+  import_tasks: "9-cron.yml"
+  tags:
+  - cron
