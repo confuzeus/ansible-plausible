@@ -22,11 +22,10 @@
     name: "{{ admin_username }}"
     append: yes
     groups: docker
-  when: enable_docker == true
 
 - name: Add public key
   authorized_key:
     key: "{{ ssh_pub_url }}"
     exclusive: yes
     user: "{{ admin_username }}"
-  when: ssh_from_url == yes
+  when: ssh_from_url == true

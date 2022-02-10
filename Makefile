@@ -1,57 +1,57 @@
 .PHONY: all common system packages users ssh firewall fail2ban nginx vim plausible
 
-COMMON_DEFAULT_BECOME_ASK_PASS="True"
-COMMON_DEFAULT_ASK_VAULT_PASS="False"
+COMMON_BECOME_ASK_PASS="True"
+COMMON_ASK_VAULT_PASS="False"
 
-PLAUSIBLE_DEFAULT_ASK_VAULT_PASS="False"
+PLAUSIBLE_ASK_VAULT_PASS="False"
 
 all: common plausible
 
 common:
-	DEFAULT_BECOME_ASK_PASS=$(COMMON_DEFAULT_BECOME_ASK_PASS) \
-	DEFAULT_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
-	ansible-playbook -i inventory.yml playbook.yml
+	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
+	ansible-playbook -i inventory.yml common.yml
 
 system:
-	DEFAULT_BECOME_ASK_PASS=$(COMMON_DEFAULT_BECOME_ASK_PASS) \
-	DEFAULT_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
-	ansible-playbook -i inventory.yml --tags "system" playbook.yml
+	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
+	ansible-playbook -i inventory.yml --tags "system" common.yml
 
 packages:
-	DEFAULT_BECOME_ASK_PASS=$(COMMON_DEFAULT_BECOME_ASK_PASS) \
-	DEFAULT_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
-	ansible-playbook -i inventory.yml --tags "packages" playbook.yml
+	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
+	ansible-playbook -i inventory.yml --tags "packages" common.yml
 
 users:
-	DEFAULT_BECOME_ASK_PASS=$(COMMON_DEFAULT_BECOME_ASK_PASS) \
-	DEFAULT_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
-	ansible-playbook -i inventory.yml --tags "users" playbook.yml
+	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
+	ansible-playbook -i inventory.yml --tags "users" common.yml
 
 ssh:
-	DEFAULT_BECOME_ASK_PASS=$(COMMON_DEFAULT_BECOME_ASK_PASS) \
-	DEFAULT_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
-	ansible-playbook -i inventory.yml --tags "ssh" playbook.yml
+	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
+	ansible-playbook -i inventory.yml --tags "ssh" common.yml
 
 firewall:
-	DEFAULT_BECOME_ASK_PASS=$(COMMON_DEFAULT_BECOME_ASK_PASS) \
-	DEFAULT_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
-	ansible-playbook -i inventory.yml --tags "firewall" playbook.yml
+	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
+	ansible-playbook -i inventory.yml --tags "firewall" common.yml
 
 fail2ban:
-	DEFAULT_BECOME_ASK_PASS=$(COMMON_DEFAULT_BECOME_ASK_PASS) \
-	DEFAULT_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
-	ansible-playbook -i inventory.yml --tags "fail2ban" playbook.yml
+	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
+	ansible-playbook -i inventory.yml --tags "fail2ban" common.yml
 
 nginx:
-	DEFAULT_BECOME_ASK_PASS=$(COMMON_DEFAULT_BECOME_ASK_PASS) \
-	DEFAULT_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
-	ansible-playbook -i inventory.yml --tags "nginx" playbook.yml
+	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
+	ansible-playbook -i inventory.yml --tags "nginx" common.yml
 
 vim:
-	DEFAULT_BECOME_ASK_PASS=$(COMMON_DEFAULT_BECOME_ASK_PASS) \
-	DEFAULT_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
-	ansible-playbook -i inventory.yml --tags "vim" playbook.yml
+	ANSIBLE_BECOME_ASK_PASS=$(COMMON_BECOME_ASK_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(COMMON_DEFAULT_ASK_VAULT_PASS) \
+	ansible-playbook -i inventory.yml --tags "vim" common.yml
 
 plausible:
-	DEFAULT_ASK_VAULT_PASS=$(PLAUSIBLE_DEFAULT_ASK_VAULT_PASS) \
+	ANSIBLE_ASK_VAULT_PASS=$(PLAUSIBLE_ASK_VAULT_PASS) \
 	ansible-playbook -i inventory.yml plausible.yml

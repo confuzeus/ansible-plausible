@@ -1,6 +1,4 @@
 ---
-admin_username: baws
-
 # Plausible
 
 # Admin user who will login and manage sites
@@ -11,6 +9,7 @@ plausible_admin_user_password: "changeme"
 
 plausible_base_url: "https://plausible.swift.com"
 
+# Generate with openssl rand -base64 64 | tr -d '\n' ; echo
 plausible_secret_key: "changeme"
 
 # Email notification settings
@@ -19,9 +18,6 @@ plausible_smtp_host: "mail.swift.io"
 plausible_smtp_port: "465"
 plausible_smtp_user: "notifications@swift.com"
 plausible_smtp_password: "changeme"
-
-# Expose this port on the host machine
-plausible_port: "10000"
 
 plausible_postgres_password: "changeme"
 

@@ -8,6 +8,8 @@
 - name: Change owner
   file:
     path: "{{ plausible_install_dir }}"
+    owner: "{{ admin_username }}"
+    group: "{{ admin_username }}"
     recurse: yes
     state: directory
 
@@ -15,6 +17,8 @@
   template:
     src: "plausible-conf.env"
     dest: "{{ plausible_install_dir }}/plausible-conf.env"
+    owner: "{{ admin_username }}"
+    group: "{{ admin_username }}"
 
 - name: Stop plausible docker stack
   shell:
@@ -25,11 +29,15 @@
   template:
     src: "docker-compose.yml"
     dest: "{{ plausible_install_dir }}/docker-compose.yml"
+    owner: "{{ admin_username }}"
+    group: "{{ admin_username }}"
 
 - name: Copy clickhouse config
   copy:
     src: "clickhouse-config.xml"
     dest: "{{ plausible_install_dir }}/clickhouse/clickhouse-config.xml"
+    owner: "{{ admin_username }}"
+    group: "{{ admin_username }}"
 
 - name: Start plausible docker stack
   shell:
