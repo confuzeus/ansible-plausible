@@ -57,3 +57,13 @@ Once the play is complete, your plausible instance should be accessible at *your
 ### Things to note
 
 - Passwords must be hashed using `mkpasswd -m sha-512`
+
+## Support and feature requests
+
+Feel free to request support and features on the Github issue tracker.
+
+## License and Copyright
+
+License is MIT.
+
+Copyright 2022 Josh Michael karamuth
