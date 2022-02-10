@@ -1,0 +1,44 @@
+---
+# vars file for ansible-plausible
+
+# System
+
+hostname: "plausible"
+timezone_name: "Indian/Mauritius"
+
+# Users
+
+# Generate with mkpasswd -m sha-512
+root_passwd_hash: "$6$JlvOeLe8Y4.cpHan$7Qv4IAEgkAW0/E5BvK93LJ824Ox4M9vrGrnyw6Ub7xEJTE4zu5ZrTcby.tf4YpsTt5NucakNq.B3Vn/80e6F2/"
+
+admin_username: baws
+
+# Generate with mkpasswd -m sha-512
+admin_passwd_hash: "$6$Nem4A8XXwYN9P3KB$zgK6E7I4zsdpuvlmANZCa2WoDZ/nA2icLdcAdcwcU1983NqNVtrM5xWVCT1jBGIddBvBtN/NTsg56aWPRhVPb."
+
+# Fetch SSH keys from url
+ssh_from_url: no
+ssh_pub_url: "https://github.com/confuzeus.keys"
+
+# SSH
+
+sshd_port_number: "50000"
+gen_host_key: true
+
+# Nginx
+
+nginx_h5bp_version: "4.1.0"
+
+vhost_template: "example.com.conf"
+
+domain_name: "example.com"
+
+with_www: false
+
+# Certbot
+
+certbot_email: "taylor@swift.com"
+
+# Cloudflare
+
+cloudflare_token: "changeme"

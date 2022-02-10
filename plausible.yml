@@ -1,0 +1,5 @@
+---
+- name: Setup plausible
+  hosts: all
+  roles:
+    - plausible

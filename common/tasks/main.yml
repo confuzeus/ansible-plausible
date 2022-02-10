@@ -1,0 +1,41 @@
+---
+# tasks file for ansible-ubuntu
+- name: Import and execute system tasks
+  import_tasks: "1-system.yml"
+  tags:
+  - system
+
+- name: Import and execute packages tasks
+  import_tasks: "2-packages.yml"
+  tags:
+  - packages
+
+- name: Import and execute user tasks
+  import_tasks: "3-users.yml"
+  tags:
+  - users
+
+- name: Import and execute ssh tasks
+  import_tasks: "4-ssh.yml"
+  tags:
+  - ssh
+
+- name: Import and execute firewall tasks
+  import_tasks: "5-firewall.yml"
+  tags:
+  - firewall
+
+- name: Import and execute fail2ban tasks
+  import_tasks: "6-fail2ban.yml"
+  tags:
+  - fail2ban
+
+- name: Import and execute nginx tasks
+  import_tasks: "7-nginx.yml"
+  tags:
+  - nginx
+
+- name: Import and execute vim tasks
+  import_tasks: "8-vim.yml"
+  tags:
+  - vim

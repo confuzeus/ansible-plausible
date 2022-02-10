@@ -1,0 +1,37 @@
+---
+- name: Clone plausible docker repo
+  git:
+    repo: "https://github.com/plausible/hosting"
+    dest: "{{ plausible_install_dir }}"
+    force: yes
+  
+- name: Change owner
+  file:
+    path: "{{ plausible_install_dir }}"
+    recurse: yes
+    state: directory
+
+- name: Template out plausible dotenv
+  template:
+    src: "plausible-conf.env"
+    dest: "{{ plausible_install_dir }}/plausible-conf.env"
+
+- name: Stop plausible docker stack
+  shell:
+    chdir: "{{ plausible_install_dir }}"
+    cmd: "docker-compose down"
+
+- name: Template out plausible docker-compose
+  template:
+    src: "docker-compose.yml"
+    dest: "{{ plausible_install_dir }}/docker-compose.yml"
+
+- name: Copy clickhouse config
+  copy:
+    src: "clickhouse-config.xml"
+    dest: "{{ plausible_install_dir }}/clickhouse/clickhouse-config.xml"
+
+- name: Start plausible docker stack
+  shell:
+    chdir: "{{ plausible_install_dir }}"
+    cmd: "docker-compose up -d"

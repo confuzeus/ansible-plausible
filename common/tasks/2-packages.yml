@@ -1,0 +1,28 @@
+---
+- name: Update all packages
+  apt:
+    name: "*"
+    state: latest
+    update_cache: yes
+
+- name: Install packages
+  apt:
+    name:
+      - "apt-transport-https"
+      - "curl"
+      - "lsb-release"
+      - "ca-certificates"
+      - "vim"
+      - "tmux"
+      - "gnupg-agent"
+      - "software-properties-common"
+      - "nginx"
+      - "fail2ban"
+      - "python3-certbot"
+      - "python3-certbot-dns-cloudflare"
+      - "docker-compose"
+      - "make"
+      - "ufw"
+
+- name: Import and execute Docker tasks
+  import_tasks: "_docker.yml"

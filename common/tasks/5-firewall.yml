@@ -1,0 +1,9 @@
+---
+- name: Template out firewall script
+  template:
+    src: "firewall.sh"
+    dest: "/tmp/firewall.sh"
+    mode: "u+x"
+
+- name: Execute firewall script
+  shell: "/tmp/firewall.sh"

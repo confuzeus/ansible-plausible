@@ -1,0 +1,54 @@
+# Server fingerprint
+# Regenerate with: ssh-keygen -o -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa -b 4096
+HostKey /etc/ssh/ssh_host_rsa_key
+# Regerate with: ssh-keygen -o -f /etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
+HostKey /etc/ssh/ssh_host_ed25519_key
+
+Port {{ sshd_port_number }}
+
+# Log for audit, even users' key fingerprint
+LogLevel VERBOSE
+
+# Ciphers and keying
+RekeyLimit 1G 1H
+KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group18-sha512,diffie-hellman-group16-sha512,diffie-hellman-group14-sha256
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com
+
+# Limit sessions and its duration
+MaxAuthTries 3
+MaxSessions 5
+ClientAliveInterval 30
+ClientAliveCountMax 6
+TCPKeepAlive no
+
+UsePAM yes
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+PubkeyAuthentication yes
+
+# Enable AllowAgentForwarding if you need to jump through this host
+AllowAgentForwarding no
+AllowTcpForwarding no
+X11Forwarding no
+PrintMotd no
+Compression no
+
+# Only if you really need it:
+#AcceptEnv LANG LC_*
+
+# Enable sftp only if needed
+# For Arch Linux and Debian 10+
+# Subsystem       sftp    /usr/lib/ssh/sftp-server
+# For Debian/Ubuntu
+Subsystem sftp /usr/lib/openssh/sftp-server -f AUTHPRIV -l INFO
+
+# Set authorized keys file
+# Prefer using an admin-controlled environment
+# AuthorizedKeysFile      /etc/ssh/authorized_keys/%u
+AuthorizedKeysFile      .ssh/authorized_keys
+
+# Restrict SSH usage
+#AllowUsers	<your username>
+# Or restrict by group
+AllowGroups sshusers

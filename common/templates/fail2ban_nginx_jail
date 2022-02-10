@@ -1,0 +1,7 @@
+[nginx-http-auth]
+enabled = true
+logpath = %(nginx_error_log)s
+
+[nginx-botsearch]
+enabled = true
+logpath = %(nginx_access_log)s

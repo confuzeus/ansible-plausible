@@ -1,0 +1,32 @@
+---
+- name: Set root password
+  user:
+    name: root
+    password: "{{ root_passwd_hash }}"
+
+- name: Create sshusers group
+  group:
+    name: "sshusers"
+    state: "present"
+
+- name: Create admin user
+  user:
+    name: "{{ admin_username }}"
+    password: "{{ admin_passwd_hash }}"
+    append: yes
+    groups: sshusers
+    shell: "/bin/bash"
+
+- name: Add admin user to docker group
+  user:
+    name: "{{ admin_username }}"
+    append: yes
+    groups: docker
+  when: enable_docker == true
+
+- name: Add public key
+  authorized_key:
+    key: "{{ ssh_pub_url }}"
+    exclusive: yes
+    user: "{{ admin_username }}"
+  when: ssh_from_url == yes

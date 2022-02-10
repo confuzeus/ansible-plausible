@@ -1,0 +1,23 @@
+---
+- name: Generate RSA Host key
+  openssh_keypair:
+    path: "/etc/ssh/ssh_host_rsa_key"
+    mode: 0600
+  notify:
+    - Reload sshd
+  when: gen_host_key == true
+
+- name: Generate ED25519 Host key
+  openssh_keypair:
+    path: "/etc/ssh/ssh_host_ed25519_key"
+    type: ed25519
+    mode: 0600
+  notify:
+    - Reload sshd
+
+- name: Copy sshd_config
+  template:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+  notify:
+    - Reload sshd

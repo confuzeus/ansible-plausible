@@ -1,0 +1,5 @@
+---
+- name: Template out global vimrc
+  template:
+    src: vimrc
+    dest: "/etc/vim/vimrc"

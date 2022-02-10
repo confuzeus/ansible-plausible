@@ -1,0 +1,7 @@
+---
+- name: Setup plausible self hosting
+  hosts: all
+  become: true
+  become_method: su
+  roles:
+    - common

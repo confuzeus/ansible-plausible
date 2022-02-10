@@ -1,0 +1,9 @@
+---
+- name: Set hostname
+  hostname:
+    name: "{{ hostname }}"
+
+- name: Set timezone
+  timezone:
+    hwclock: "UTC"
+    name: "{{ timezone_name }}"

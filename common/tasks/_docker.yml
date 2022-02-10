@@ -1,0 +1,15 @@
+---
+- name: Copy docker installer
+  copy:
+    src: "docker-installer"
+    dest: "/tmp/docker-installer"
+    mode: "u+x"
+
+- name: Execute docker installer
+  shell: "/tmp/docker-installer"
+
+- name: Start and enable docker
+  systemd:
+    name: "docker"
+    enabled: yes
+    state: started

@@ -1,0 +1,45 @@
+---
+- name: Stop nginx
+  systemd:
+    name: nginx
+    state: stopped
+
+- name: Delete nginx config dir
+  file:
+    path: "/etc/nginx"
+    state: absent
+
+- name: Clone h5bp Nginx configs
+  git:
+    repo: "https://github.com/h5bp/server-configs-nginx.git"
+    dest: "/etc/nginx"
+    version: "{{ nginx_h5bp_version }}"
+
+- name: Generate ssl dhparams
+  shell: "if [ ! -f '/etc/ssl/dhparams.pem' ]; then openssl dhparam -out /etc/ssl/dhparams.pem 4096; fi"
+
+- name: Template out Makefile
+  template:
+    src: "Makefile"
+    dest: "/root/Makefile"
+
+- name: Template out cloudflare.ini
+  template:
+    src: "cloudflare_ini"
+    dest: "/root/cloudflare.ini"
+    mode: "u=r,g=,o="
+
+- name: Execute certbot
+  shell:
+    chdir: "/root"
+    cmd: "make certs"
+
+- name: Template out vhost
+  template:
+    src: "{{ vhost_template }}"
+    dest: "/etc/nginx/conf.d/{{ vhost_template }}"
+
+- name: Start nginx
+  systemd:
+    name: nginx
+    state: started

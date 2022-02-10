@@ -1,0 +1,14 @@
+---
+- name: Template out ssh jail
+  template:
+    src: fail2ban_ssh_jail
+    dest: "/etc/fail2ban/jail.d/ssh.conf"
+  notify:
+    - Reload fail2ban
+  
+- name: Template out nginx jail
+  template:
+    src: fail2ban_nginx_jail
+    dest: "/etc/fail2ban/jail.d/nginx.conf"
+  notify:
+    - Reload fail2ban
