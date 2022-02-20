@@ -52,7 +52,7 @@ ansible-vault encrypt common/vars/main.yml
 ansible-vault encrypt plausible/vars/main.yml
 ```
 
-If you encrypt your variables, edit `Makefile` and set `COMMON_ASK_VAULT_PASS` and
+If you encrypt your variables, edit `Makefile` and set `ANSIBLE_ASK_VAULT_PASS` and
 `PLAUSIBLE_ASK_VAULT_PASS` to True.
 
 Run `make` and the play should start.
